@@ -17,10 +17,10 @@ var controllerPM = [99, 1, 2, 3, 5, 4, 6, 11, 12];
 var controllerPM_time = [100, 2900, 2540, 5250, 560, 5250, 560, 6400, 4200];
 
 
-// ß@Èı‚€listÊÇ·Ö„eŒ¦‘ªµÄ
+// é€™ä¸‰å€‹listæ˜¯åˆ†åˆ¥å°æ‡‰çš„
 var controllerPMS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 22, 23, 24, 25, 26, 27, 28, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39];
 var controllerPMS_time = [2300, 3300, 4800, 3800, 6600, 9300, 2990, 3300, 19750, 1700, 2180, 1662, 16290, 2424, 2200, 2738, 600, 200, 200, 200, 500, 1123, 120, 690, 690, 300];
-var pmsMotionNames = ["¾Ï¹ª", "Í¨¹ı", "Ç¿×³", "×¢Òâ", "Æ½ºâ", "ÈÈÉí", "ÅÄÊÖ", "Æíµ»", "ÌøÎè", "¸©Éí", "×øÏÂ", "Ò¡Í·", "Å¤Ñü", "ÎÕÊÖ", "·ÉÏè", "ÄÓÍ·", "¸©ÎÔ³Å", "Ì§×óÊÖ", "Ì§ÓÒÊÖ", "Ì§Ë«ÊÖ", "Ê¤Àû", "ÑöÎÔÆğ×ø", "Ç°½øÆğÊ¼", "ÂõÓÒÍÈ", "Âõ×óÍÈ", "ÊÕÍÈ"];
+var pmsMotionNames = ["é èº¬", "é€šè¿‡", "å¼ºå£®", "æ³¨æ„", "å¹³è¡¡", "çƒ­èº«", "æ‹æ‰‹", "ç¥ˆç¥·", "è·³èˆ", "ä¿¯èº«", "åä¸‹", "æ‘‡å¤´", "æ‰­è…°", "æ¡æ‰‹", "é£ç¿”", "æŒ å¤´", "ä¿¯å§æ’‘", "æŠ¬å·¦æ‰‹", "æŠ¬å³æ‰‹", "æŠ¬åŒæ‰‹", "èƒœåˆ©", "ä»°å§èµ·å", "å‰è¿›èµ·å§‹", "è¿ˆå³è…¿", "è¿ˆå·¦è…¿", "æ”¶è…¿"];
 
 
 var isRoboheroAlive = false; // check robohero is alive or not
@@ -136,7 +136,7 @@ var controllerServo = function (arr, callback) {
 }
 
 
-var breakMotion = false; // ÖĞ”à„Ó×÷ÓÃ
+var breakMotion = false; // ä¸­æ–·å‹•ä½œç”¨
 var executeMotion_global = function (data, callback) {
     breakMotion = false;
     var motionIndex = 0;
@@ -250,10 +250,10 @@ function sleep(numberMillis) {
 
 
     ext.motionForward = function (callback) {
-        runPMcallback(1, callback);
+        runPMcallback(0, callback);
     };
     ext.motionBackward = function (callback) {
-        runPMcallback(2, callback);
+        runPMcallback(1, callback);
     };
 
     ext.motionMoveLeft = function (callback) {
@@ -340,22 +340,22 @@ function sleep(numberMillis) {
         blocks: [
             ['R', 'Find Robohero', 'findRobohero_ext'],
             [' ', 'RoboHero Address %s', 'setRoboheroUrl', robohero_url],
-            ['w', 'Á¢Õı', 'motionStand'],
-            ['w', 'Ç°½ø', 'motionForward'],
-            ['w', 'ºóÍË', 'motionBackward'],
-            ['w', '×óÒÆ', 'motionMoveLeft'],
-            ['w', 'ÓÒÒÆ', 'motionMoveRight'],
+            ['w', 'ç«‹æ­£', 'motionStand'],
+            ['w', 'å‰è¿›', 'motionForward'],
+            ['w', 'åé€€', 'motionBackward'],
+            ['w', 'å·¦ç§»', 'motionMoveLeft'],
+            ['w', 'å³ç§»', 'motionMoveRight'],
 
-            ['w', '×ó×ª', 'motionTurnLeft'],
-            ['w', 'ÓÒ×ª', 'motionTurnRight'],
+            ['w', 'å·¦è½¬', 'motionTurnLeft'],
+            ['w', 'å³è½¬', 'motionTurnRight'],
 
-            ['w', 'ÑöÃæÕ¾Á¢', 'motionStandUp'],
-            ['w', '¸©ÃæÆğÉí', 'motionGetUp'],
+            ['w', 'ä»°é¢ç«™ç«‹', 'motionStandUp'],
+            ['w', 'ä¿¯é¢èµ·èº«', 'motionGetUp'],
 
-            ['w', '×ßËÄ·½', 'motionSquare'],
-            ['w', 'ÌøÎèshow', 'motionDanceshow'],
+            ['w', 'èµ°å››æ–¹', 'motionSquare'],
+            ['w', 'è·³èˆshow', 'motionDanceshow'],
 
-            ['w', '½ø½×¶¯×÷ %m.pmsMotion', 'runPmsByName', pmsMotionNames[0] + ""],
+            ['w', 'è¿›é˜¶åŠ¨ä½œ %m.pmsMotion', 'runPmsByName', pmsMotionNames[0] + ""],
 
 
 
